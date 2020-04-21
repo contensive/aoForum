@@ -1,5 +1,5 @@
 ﻿
-namespace Contensive.Addons.aoForum {
+namespace Contensive.Addons.Forum {
     public static class Constants {
         // 
         // -- sample

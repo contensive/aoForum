@@ -1,9 +1,9 @@
 
 using System;
-using Contensive.Addons.aoForum.Controllers;
+using Contensive.Addons.Forum.Controllers;
 using Contensive.BaseClasses;
 
-namespace Contensive.Addons.aoForum {
+namespace Contensive.Addons.Forum {
     namespace Views {
         //
         public class SampleAddonClass : AddonBaseClass {

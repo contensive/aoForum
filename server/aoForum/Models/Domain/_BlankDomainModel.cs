@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using Contensive.BaseClasses;
 
-namespace Contensive.Addons.aoForum {
+namespace Contensive.Addons.Forum {
     namespace Models.Domain {
         public class BlankDomainModel : BaseDomainModel {
             // 
@@ -36,7 +36,7 @@ namespace Contensive.Addons.aoForum {
             /// <param name="pageNumber"></param>
             /// <returns></returns>
             public static List<BlankDomainModel> createList(CPBaseClass cp, int organizationId, int pageSize, int pageNumber) {
-                string sql = Forum.Properties.Resources.sampleSql.Replace("{organizationId}", organizationId.ToString());
+                string sql = Contensive.Addon.Forum.Properties.Resources.sampleSql.Replace("{organizationId}", organizationId.ToString());
                 return createListFromSql<BlankDomainModel>(cp, sql, pageSize, pageNumber);
             }
             // 

@@ -1,7 +1,7 @@
 ﻿
 using Contensive.Models.Db;
 
-namespace Contensive.Addons.aoForum {
+namespace Contensive.Addons.Forum {
     namespace Models.Db {
         // 
         /// <summary>

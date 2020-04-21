@@ -1,0 +1,15 @@
+﻿
+select 
+f.id,f.name,f.headline,f.description,f.recaptcha
+,c.id as commentId,c.comment as comment
+,cm.id as cmId,cm.name as cmName,cm.email as cmEmail,cm.thumbnailfilename as cmthumbfilename,cm.imagefilename as cmImageFilename
+,r.id as replyId,r.comment as reply
+,rm.id as rmId, rm.name as rmName,rm.email as rmEmail,rm.thumbnailfilename as rmthumbfilename,rm.imagefilename as rmImageFilename
+from fmforums f
+left join fmForumComments c on c.forumid=f.id
+left join ccmembers cm on cm.id=c.createdby
+left join fmForumComments r on r.commentid=c.id
+left join ccmembers rm on rm.id=r.createdby
+where (f.id={forumId})and(c.commentid=0)
+order by c.id,r.id
+

@@ -19,9 +19,9 @@ C:\Git\aoForum\server\aoForum\bin\Debug\CPBase.dll
 C:\Git\aoForum\server\aoForum\bin\Debug\Newtonsoft.Json.dll
 C:\Git\aoForum\server\aoForum\bin\Debug\Nustache.Core.dll
 C:\Git\aoForum\server\aoForum\bin\Debug\Newtonsoft.Json.xml
-C:\Git\aoForum\server\aoForum\obj\Debug\aoForum.csprojAssemblyReference.cache
 C:\Git\aoForum\server\aoForum\obj\Debug\Contensive.Addon.Forum.Properties.Resources.resources
 C:\Git\aoForum\server\aoForum\obj\Debug\aoForum.csproj.GenerateResource.cache
 C:\Git\aoForum\server\aoForum\obj\Debug\aoForum.csproj.CopyComplete
 C:\Git\aoForum\server\aoForum\obj\Debug\aoForum.dll
 C:\Git\aoForum\server\aoForum\obj\Debug\aoForum.pdb
+C:\Git\aoForum\server\aoForum\obj\Debug\aoForum.csprojAssemblyReference.cache

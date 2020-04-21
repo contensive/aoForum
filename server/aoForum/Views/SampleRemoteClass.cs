@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Contensive.BaseClasses;
 using Contensive.Models.Db;
-using static Contensive.Addons.aoForum.Constants;
+using static Contensive.Addons.Forum.Constants;
 using static Newtonsoft.Json.JsonConvert;
 
-namespace Contensive.Addons.aoForum {
+namespace Contensive.Addons.Forum {
     namespace Views {
         //
         /// <summary>

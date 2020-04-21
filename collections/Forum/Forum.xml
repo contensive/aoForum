@@ -4,7 +4,7 @@
 	<Help></Help>
 	<Addon name="Forum" guid="{a9393394-a072-4673-b2bf-eb7fc3cff9a3}" type="Add-on">
 		<AliasList>Forum Design block</AliasList>
-		<DotNetClass><![CDATA[Contensive.Addons.aoForum.Views.ForumClass]]></DotNetClass>
+		<DotNetClass><![CDATA[Contensive.Addons.Forum.Views.ForumClass]]></DotNetClass>
 		<AsAjax>No</AsAjax>
 		<Filter>No</Filter>
 		<Icon Link="" width="50" height="50" sprites="0" />
@@ -34,11 +34,28 @@
 			.fmImage{
 				max-width:80px;
 				max-height:80px;
-			}]]></Styles>
+			}
+			.fmAvatarCon
+			{
+				display: inline-block;
+				font-size: 30px;
+				line-height: 60px;
+				background-color: #ddd;
+				color: white ! important;
+				width: 60px;
+				height: 60px;
+				border-radius: 6px;				
+			}
+			.fmAvatar
+			{
+				object-fit: cover;
+				height: 100%;				
+			}			
+			]]></Styles>
 		<styleslinkhref></styleslinkhref>
 		<Scripting Language="VBScript" EntryPoint="" Timeout="5000"/>
 		<Category>Applications.Social Media</Category>
-		<instanceSettingPrimaryContentId><![CDATA[DB Tiles]]></instanceSettingPrimaryContentId>
+		<instanceSettingPrimaryContentId><![CDATA[Forums]]></instanceSettingPrimaryContentId>
 	</Addon>
 	<CDef Name="Forums" Active="1" AdminOnly="0" AllowAdd="1" AllowCalendarEvents="0" AllowContentChildTool="0" AllowContentTracking="0" AllowDelete="1" AllowMetaContent="" AllowTopicRules="0" AllowWorkflowAuthoring="0" AuthoringDataSourceName="Default" AuthoringTableName="fmForums" ContentDataSourceName="Default" ContentTableName="fmForums" DefaultSortMethod="By Name" DeveloperOnly="0" DropDownFieldList="Name" EditorGroupName="" Parent="" IconLink="" IconHeight="0" IconWidth="0" IconSprites="0" isbasecontent="0" guid="{fb7ccb00-4a2c-44a0-8919-73c5220b0417}" >
 		<Field Name="name" active="True" AdminOnly="False" Authorable="True" Caption="Name" DeveloperOnly="False" EditSortPriority="110" FieldType="Text" HTMLContent="False" IndexColumn="0" IndexSortDirection="" IndexSortOrder="0" IndexWidth="" RedirectID="" RedirectPath="" Required="False" TextBuffered="False" UniqueName="False" DefaultValue="" RSSTitle="False" RSSDescription="False" MemberSelectGroup="" EditTab="" Scramble="False" LookupList="" NotEditable="False" Password="False" ReadOnly="False" ManyToManyRulePrimaryField="" ManyToManyRuleSecondaryField="" IsModified="False" IsBaseField="False" LookupContent="" RedirectContent="" ManyToManyContent="" ManyToManyRuleContent="" ></Field>

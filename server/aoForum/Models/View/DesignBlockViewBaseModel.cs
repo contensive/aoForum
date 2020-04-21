@@ -1,11 +1,11 @@
 ﻿
 using System;
-using Contensive.Addons.aoForum.Controllers;
-using Contensive.Addons.aoForum.Models.Db;
+using Contensive.Addons.Forum.Controllers;
+using Contensive.Addons.Forum.Models.Db;
 using Contensive.BaseClasses;
 using Contensive.Models.Db;
 
-namespace Contensive.Addons.aoForum {
+namespace Contensive.Addons.Forum {
     namespace Models.View {
         public class DesignBlockViewBaseModel {
             public string styleBackgroundImage { get; set; }

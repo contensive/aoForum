@@ -133,6 +133,7 @@
   <ItemGroup>
     <Content Include="Resources\sampleSql.txt" />
     <Content Include="Resources\ForumLayout.html" />
+    <Content Include="Resources\selectSql.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

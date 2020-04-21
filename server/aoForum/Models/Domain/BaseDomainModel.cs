@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Contensive.BaseClasses;
 
-namespace Contensive.Addons.aoForum {
+namespace Contensive.Addons.Forum {
     namespace Models.Domain {
         public abstract class BaseDomainModel {
             // 

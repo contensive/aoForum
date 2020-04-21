@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Contensive.Addons.Forum.Properties {
+namespace Contensive.Addon.Forum.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Contensive.Addons.Forum.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Contensive.Addons.Forum.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Contensive.Addon.Forum.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -83,11 +83,35 @@ namespace Contensive.Addons.Forum.Properties {
         /// <summary>
         ///   Looks up a localized string similar to select top 1 m.name as personName, o.organizationName 
         ///from ccmembers m left join organizations o on o.id=m.organizationId
-        ///where o.id={organizationId}.
+        ///where o.id={organizationId}
+        ///
+        ///
+        ///
+        ///.
         /// </summary>
         internal static string sampleSql {
             get {
                 return ResourceManager.GetString("sampleSql", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///select 
+        ///f.id,f.name,f.headline,f.description,f.recaptcha
+        ///,c.id as commentId,c.comment as comment
+        ///,cm.id as cmId,cm.name as cmName,cm.thumbnailfilename as cmthumbImagefilename,cm.imagefilename as cmImageFilename
+        ///,r.id as replyId,r.comment as reply
+        ///,rm.id as rmId, rm.name as rmName,rm.thumbnailfilename as rmthumbImagefilename,rm.imagefilename as rmImageFilename
+        ///
+        ///from fmforums f
+        ///left join fmForumComments c on c.forumid=f.id
+        ///left join ccmembers cm on cm.id=c.createdby
+        ///left join fmForumComments r on  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string selectSql {
+            get {
+                return ResourceManager.GetString("selectSql", resourceCulture);
             }
         }
     }

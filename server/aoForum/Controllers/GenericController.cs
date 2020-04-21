@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 
-namespace Contensive.Addons.aoForum {
+namespace Contensive.Addons.Forum {
     namespace Controllers {
         public static class GenericController {
             //

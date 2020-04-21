@@ -3,7 +3,7 @@ using System;
 using Contensive.BaseClasses;
 using Contensive.Models.Db;
 
-namespace Contensive.Addons.aoForum {
+namespace Contensive.Addons.Forum {
     namespace Models.Db {
         public class ForumModel : DesignBlockBaseModel {
             /// <summary>

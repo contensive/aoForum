@@ -2,7 +2,7 @@
 using System;
 using Contensive.BaseClasses;
 
-namespace Contensive.Addons.aoForum {
+namespace Contensive.Addons.Forum {
     namespace Controllers {
         public static class DesignBlockController {
             // 
@@ -143,7 +143,7 @@ namespace Contensive.Addons.aoForum {
             public static string getLayoutByGuid(CPBaseClass cp, string LayoutGuid, string LayoutDefaultName, string LayoutDefaultHtml) {
                 using (CPCSBaseClass cs = cp.CSNew()) {
                     if (cs.Open("layouts", "ccguid=" + cp.Db.EncodeSQLText(LayoutGuid)))
-                        return cs.GetText("layout");
+                        return cp.Html5.Form( cs.GetText("layout"));
                     // 
                     // -- record not found, create it and return the default layout
                     cs.Close();
@@ -153,8 +153,22 @@ namespace Contensive.Addons.aoForum {
                     cs.SetField("layout", LayoutDefaultHtml);
                     cs.Save();
                 }
-                return LayoutDefaultHtml;
+                return cp.Html5.Form(LayoutDefaultHtml);
             }
+            // 
+            // ====================================================================================================
+            /// <summary>
+            /// Return the avatar linked to the cdn file source. prefer the thumbnail, but image is a backup
+            /// </summary>
+            /// <param name="cp"></param>
+            /// <param name="ae"></param>
+            /// <param name="thumbnail"></param>
+            /// <param name="image"></param>
+            /// <returns></returns>
+            public static string getAvatarLink( CPBaseClass cp, ApplicationController ae, string thumbnail, string image) {
+                string avatar = (string.IsNullOrWhiteSpace(thumbnail) ? image : thumbnail);
+                return string.IsNullOrWhiteSpace(image) ? "" : cp.Site.FilePath + avatar; 
+           }
 
         }
     }
