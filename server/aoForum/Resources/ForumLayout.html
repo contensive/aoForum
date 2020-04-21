@@ -8,9 +8,9 @@
             {{#description}}
             <div class="blockForumDescription">{{{description}}}</div>
             {{/description}}
-            <div class="fmAddComment">
+            <div class="fmAddComment form-group">
                 <!-- Create a new comment -->
-                <div class="row form-group">
+                <div class="row">
                     <div class="col-2">
                         <div class="fmAvatarCon text-center float-right">
                             {{#addCommentImageFilename}}
@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 {{^userAuthenticated}}
-                <div class="row form-group">
+                <div class="row">
                     <div class="col-2">
                         <label for="exampleInputName1"></label>
                     </div>
@@ -38,10 +38,10 @@
                     </div>
                 </div>
                 {{/userAuthenticated}}
-                <div class="row form-group">
+                <div class="row">
                     <div class="col-2">&nbsp;</div>
                     <div class="col-10">
-                        <button type="submit" name="button" class="btn btn-primary" value="addComment">Comment</button>
+                        <button type="submit" name="button" class="mt-2 btn btn-primary" value="addComment">Comment</button>
                     </div>
                 </div>
             </div>
@@ -49,6 +49,9 @@
             {{#commentList}}
             <div class="fmComment border-top pt-2 mt-2">
                 <div class="row fmCommentBody">
+                    <!-- 
+                        comment avatar
+                    -->
                     <div class="col-2">
                         <div class="fmAvatarCon text-center float-right">
                             {{#commentImageFilename}}
@@ -59,75 +62,78 @@
                             {{/commentImageFilename}}
                         </div>
                     </div>
+                    <!-- 
+                        comment 
+                    -->
                     <div class="col-10">
-                        <div class="p-2 border rounded bg-light">
+                        <div class="p-2 border rounded bg-light fmMinHeightComment" style="min-height:100px">
                             <p class="m-0 p-0">{{comment}}</p>
                         </div>
-                        {{#commentUserName}}
                         <div class="pl-2 text-muted">
-                            <p class="m-0 p-0">{{commentUserName}}</p>
+                            <p class="m-0 p-0">{{commentUserName}} <span class="text-primary font-weight-bold fmReplyButton" data-commentid="{{commentid}}">Reply</span></p>
                         </div>
-                        {{/commentUserName}}
-                    </div>
-                </div>
-                <!-- reply button - shows the reply form -->
-                <div class="row">
-                    <div class="col-2">&nbsp;</div>
-                    <div class="col-10">
-                        <button type="button" name="blockForumFormButton" class="btn btn-primary btn-sm m-1 fmReplyButton" data-commentid="{{commentid}}">Reply</button>
-                    </div>
-                </div>
-                <!-- reply form -->
-                <div class="fmCommentReplyForm commentHide" id="fmReplyForm{{commentid}}" style="display:none;">
-                    <div class="row">
-                        <div class="col-2">&nbsp;</div>
-                        <div class="col-10 form-group">
-                            <textarea rows="2" class="form-control" id="CommentReplyInput1" name="replyBody{{commentid}}" placeholder="reply..."></textarea>
-                        </div>
-                    </div>
-                    {{^userAuthenticated}}
-                    <div class="row">
-                        <div class="col-2">&nbsp;</div>
-                        <div class="col-5">
-                            <input type="text" class="form-control" id="exampleReplyInputName" name="replyUserName{{commentid}}" value="{{replyUserName}}" placeholder="Enter Name">
-                        </div>
-                        <div class="col-5">
-                            <input type="email" class="form-control" id="exampleReplyInputEmail1" name="replyUserEmail{{commentid}}" value="{{replyUserEmail}}" placeholder="Enter email">
-                        </div>
-                    </div>
-                    {{/userAuthenticated}}
-                    <div class="row">
-                        <div class="col-2">&nbsp;</div>
-                        <div class="col-10">
-                            <button type="submit" name="button" class="btn btn-primary m-1" value="addReply-{{commentId}}">Reply</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="fmCommentReplyList">
-                    {{#replyList}}
-                    <div class="row">
-                        <div class="col-2">
-                            <div class="fmAvatarCon text-center float-right">
-                                {{#replyImageFilename}}
-                                <img class="fmAvatar float-right" alt="" profile="" image""="" src="{{replyImageFilename}}">
-                                {{/replyImageFilename}}
-                                {{^replyImageFilename}}
-                                <i class="fas fa-user"></i>
-                                {{/replyImageFilename}}
+                        <!-- reply button - shows the reply form -->
+                        <!--
+                        <div class="row">
+                            <div class="col-2">&nbsp;</div>
+                            <div class="col-10">
+                                <button type="button" name="blockForumFormButton" class="btn btn-primary btn-sm m-1 fmReplyButton" data-commentid="{{commentid}}">Reply</button>
                             </div>
                         </div>
-                        <div class="col-10">
-                            <div class="p-2 border rounded">
-                                <p class="m-0 p-0">{{reply}}</p>
+                        -->
+                        <!-- reply form -->
+                        <div class="fmCommentReplyForm commentHide form-group" id="fmReplyForm{{commentid}}" style="display:none;">
+                            <div class="row">
+                                <div class="col-1">&nbsp;</div>
+                                <div class="col-11">
+                                    <textarea rows="2" class="form-control border rounded" id="CommentReplyInput{{commentid}}" name="replyBody{{commentid}}" placeholder="reply..."></textarea>
+                                </div>
                             </div>
-                            {{#replyUserName}}
-                            <div class="pl-2 text-muted">
-                                <p class="m-0 p-0">{{replyUserName}}</p>
+                            {{^userAuthenticated}}
+                            <div class="row">
+                                <div class="col-1">&nbsp;</div>
+                                <div class="col-5">
+                                    <input type="text" class="form-control" id="exampleReplyInputName" name="replyUserName{{commentid}}" value="{{replyUserName}}" placeholder="Enter Name">
+                                </div>
+                                <div class="col-6">
+                                    <input type="email" class="form-control" id="exampleReplyInputEmail1" name="replyUserEmail{{commentid}}" value="{{replyUserEmail}}" placeholder="Enter email">
+                                </div>
                             </div>
-                            {{/replyUserName}}
+                            {{/userAuthenticated}}
+                            <div class="row">
+                                <div class="col-1">&nbsp;</div>
+                                <div class="col-11">
+                                    <button type="submit" name="button" class="btn btn-primary mt-2" value="addReply-{{commentId}}">Reply</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fmCommentReplyList">
+                            {{#replyList}}
+                            <div class="row pt-2">
+                                <div class="col-1">
+                                    <div class="fmAvatarCon text-center float-right">
+                                        {{#replyImageFilename}}
+                                        <img class="fmAvatar float-right" alt="" profile="" image""="" src="{{replyImageFilename}}">
+                                        {{/replyImageFilename}}
+                                        {{^replyImageFilename}}
+                                        <i class="fas fa-user"></i>
+                                        {{/replyImageFilename}}
+                                    </div>
+                                </div>
+                                <div class="col-11">
+                                    <div class="p-2 border rounded bg-light fmMinHeightReply">
+                                        <p class="m-0 p-0">{{reply}}</p>
+                                    </div>
+                                    {{#replyUserName}}
+                                    <div class="pl-2 text-muted">
+                                        <p class="m-0 p-0">{{replyUserName}}</p>
+                                    </div>
+                                    {{/replyUserName}}
+                                </div>
+                            </div>
+                            {{/replyList}}
                         </div>
                     </div>
-                    {{/replyList}}
                 </div>
             </div>
             {{/commentList}}
@@ -138,10 +144,12 @@
     document.addEventListener("DOMContentLoaded", function (event) {
         console.log("forum-bind-ready");
         jQuery('.fmReplyButton').on("click", function () {
-            console.log("reply button click, target [#fmReplyForm" + jQuery(this).attr("data-commentid") + "]");
+            var commentId = jQuery(this).attr("data-commentid");
+            console.log("reply button click, target [#fmReplyForm" + commentId + "]");
             jQuery(this).hide();
             jQuery(".fmCommentReplyForm").hide();
-            jQuery("#fmReplyForm" + jQuery(this).attr("data-commentid")).show();
+            jQuery("#fmReplyForm" + commentId).show();
+            jQuery("#CommentReplyInput" + commentId).focus();
         })
     });
 </script>

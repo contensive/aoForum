@@ -26,11 +26,11 @@
 		<ProcessRunOnce>No</ProcessRunOnce>
 		<ProcessInterval>0</ProcessInterval>
 		<Styles><![CDATA[
-			figure {
+			/* figure {
 				margin-right: 7rem;
 				margin-left: 7rem;
 				background: #083269;
-			}
+			} */
 			.fmImage{
 				max-width:80px;
 				max-height:80px;
@@ -50,7 +50,19 @@
 			{
 				object-fit: cover;
 				height: 100%;				
-			}			
+			}	
+			.fmMinHeightComment
+			{
+				min-height:110px
+			}		
+			.fmMinHeightReply
+			{
+				min-height:80px
+			}	
+			.fmReplyButton 
+			{
+				cursor: pointer;
+			}	
 			]]></Styles>
 		<styleslinkhref></styleslinkhref>
 		<Scripting Language="VBScript" EntryPoint="" Timeout="5000"/>

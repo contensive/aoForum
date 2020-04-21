@@ -56,44 +56,38 @@ namespace Contensive.Addons.Forum {
             /// <param name="settings"></param>
             /// <returns></returns>
             public static ForumViewModel create(CPBaseClass cp, ForumModel settings, ApplicationController ae) {
+                int hint = 10;
                 try {
                     // 
                     // -- base fields
                     string avatar = (string.IsNullOrWhiteSpace(ae.user.thumbnailFilename) ? ae.user.imageFilename : ae.user.thumbnailFilename);
                     var result = create<ForumViewModel>(cp, settings);
+                    result.forumId = settings.id;
+                    result.forumName = settings.name;
+                    result.headline = settings.headline;
+                    result.description = settings.description;
+                    result.recaptcha = settings.recaptcha;
                     result.userAuthenticated = cp.User.IsAuthenticated;
                     result.addCommentName = ae.user.name;
                     result.addCommentEmail = ae.user.email;
                     result.addCommentImageFilename = DesignBlockController.getAvatarLink(cp, ae, ae.user.thumbnailFilename, ae.user.imageFilename);
                     result.addCommentCopy = "";
-                    //
-                    //List<ForumCommentModel> commentList = DbBaseModel.createList<ForumCommentModel>(cp, "forumId=" + settings.id + ")","commentid desc,id desc");
-                    //foreach ( var comment in commentList) {
-                    //    if(comment.commentid.Equals(0)) {
-                    //        //
-                    //        // -- this is the next newest command (not reply)
-                    //    }
-                    //}
-
-
-
+                    result.commentList = new List<ForumComment>();
                     using (var cs = cp.CSNew()) {
+                        hint = 20;
                         if (cs.OpenSQL(Contensive.Addon.Forum.Properties.Resources.selectSql.Replace("{forumId}", settings.id.ToString()))) {
-                            result.forumId = cs.GetInteger("id");
-                            result.forumName = cs.GetText("name");
-                            result.headline = cs.GetText("headline");
-                            result.description = cs.GetText("description");
-                            result.recaptcha = cs.GetBoolean("recaptcha");
-                            result.commentList = new List<ForumComment>();
                             //int lastCommentId = 0;
                             ForumComment comment = new ForumComment();
                             ForumCommentReply reply = new ForumCommentReply();
                             do {
+                                hint = 30;
                                 int commentId = cs.GetInteger("commentId");
                                 if (commentId != 0) {
+                                    hint = 40;
                                     //
                                     // -- this row has a valid comment
                                     if (commentId != comment.commentId) {
+                                        hint = 50;
                                         //
                                         // -- this row is a new comment
                                         string commentBody = cs.GetText("comment");
@@ -111,8 +105,10 @@ namespace Contensive.Addons.Forum {
                                         };
                                         result.commentList.Add(comment);
                                     }
+                                    hint = 60;
                                     int replyId = cs.GetInteger("replyId");
                                     if (replyId != 0) {
+                                        hint = 70;
                                         //
                                         // -- this row has a valid reply
                                         if (replyId != reply.replyId) {
@@ -132,13 +128,15 @@ namespace Contensive.Addons.Forum {
                                         }
                                     }
                                 }
+                                hint = 80;
                                 cs.GoNext();
                             } while (cs.OK());
                         }
                     }
                     //
                     // -- now reverse the list for display
-                    foreach( var comment in result.commentList) {
+                    hint = 90;
+                    foreach ( var comment in result.commentList) {
                         comment.replyList.Reverse();
                     }
                     result.commentList.Reverse();
@@ -146,7 +144,7 @@ namespace Contensive.Addons.Forum {
                     // -- return the list
                     return result;
                 } catch (Exception ex) {
-                    cp.Site.ErrorReport(ex);
+                    cp.Site.ErrorReport(ex, "hint-" + hint.ToString());
                     return null;
                 }
             }
