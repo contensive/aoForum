@@ -1,0 +1,107 @@
+﻿<div class="designBlockContainer blockSample {{outerContainerClass}}" style="{{styleHeight}}{{styleBackgroundImage}}">
+    <div class="{{contentContainerClass}}">
+        <div class="blockForumInner">
+            <!-- forum description  -->
+            {{#headline}}
+            <h2>{{{headline}}}</h2>
+            {{/headline}}
+            {{#description}}
+            <div class="blockForumDescription">{{{description}}}</div>
+            {{/description}}
+        <div class="fmAddComment">
+            <!-- Create a new message -->
+            <div class="row form-group">
+                <div class="col-2">
+                    <label for="CommentInput1"><img class="fmImage" alt="" profile="" image""="" src="{{addCommentImageFilename}}"></label>
+                </div>
+                <div class="col-10">
+                    <textarea rows="4" class="form-control" id="CommentInput1" name="CommentInput" placeholder="leave a Message...">{{addCommentCopy}}</textarea>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-2">
+                    <label for="exampleInputName1"></label>
+                </div>
+                <div class="col-5">
+                    <input type="text" class="form-control" id="exampleInputName" name="CommentUserName" value="{{addCommentName}}" placeholder="Enter Your Name" readonly="">
+                </div>
+                <div class="col-5">
+                    <input type="email" class="form-control" id="exampleInputEmail1" name="CommentEmail" aria-describedby="emailHelp" placeholder="Enter Your Email" value="{{addCommentEmail}}" readonly="">
+                </div>
+            </div>
+            <button type="submit" name="button-addcomment" class="btn btn-primary m-3" value="Submit">Submit</button>
+        </div>
+            <!-- List of Messages -->
+            {{#commentList}}
+            <div class="fmComment">
+                <div class="row fmCommentBody">
+                    <div class="col-1">
+                        <label for="">
+                            <img class="fmImage" alt="" profile="" image""="" src="{{commentImageFilename}}">
+                        </label>
+                    </div>
+                    <div class="col-11">
+                        <p>{{comment}}</p>
+                    </div>
+                </div>
+                <div class="fmCommentReplyList">
+                    {{#replyList}}
+                    <div class="row">
+                        <div class="col-1">
+                            <label for="">
+                                <img class="fmImage" alt="" profile="" image""="" src="{{replyImageFilename}}">
+                            </label>
+                        </div>
+                        <div class="col-11">
+                            <p>{{reply}}</p>
+                        </div>
+                    </div>
+                    {{/replyList}}
+                </div>
+                <div class="fmCommentReplyForm">
+                    <!-- reply form -->
+                    <div class="row">
+                        <div class="commentHide" id="commentShow1" style="display:none;">
+                            <div class="form-group">
+                                <div class="col-10">
+                                    <textarea rows="4" class="form-control" id="CommentReplyInput1" name="CommentReplyInput" placeholder="leave a Message..."></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-2">
+                                    <label for="exampleInputEmail1"></label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="email" class="form-control" id="exampleReplyInputEmail1" name="CommentReplyEmail" value="Jay Kidwell" placeholder="Enter email" readonly="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-2">
+                                    <label for="exampleInputName1"></label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="input" class="form-control" id="exampleReplyInputName" name="CommentReplyUserName" value="Jay Kidwell" placeholder="Enter Name" readonly="">
+                                    <input name="commentId" type="hidden" value="12">
+                                </div>
+                            </div>
+                            <button type="submit" name="blockForumFormButton" class="btn btn-primary m-3" value="Resubmit">Submit</button>
+                        </div>
+                        <div class="row">
+                            <div class="col-1">
+                                <button type="button" id="commentReply1" name="blockForumReplyFormButton" class="btn btn-primary m-3 btn-sm" value="reply" onclick="jQuery('.commentHide').hide(); jQuery('#commentShow1').show();">Reply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/commentList}}
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
