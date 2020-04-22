@@ -18,6 +18,7 @@ namespace Contensive.Addons.Forum {
             public string replyUserName { get; set; }
             public string replyUserEmail { get; set; }
             public string replyImageFilename { get; set; }
+            public string replyByLine { get; set; }
         }
         /// <summary>
         /// forum comments
@@ -93,7 +94,12 @@ namespace Contensive.Addons.Forum {
                                         string commentBody = cs.GetText("comment");
                                         string cmName = cs.GetText("cmName");
                                         string cmEmail = cs.GetText("cmEmail");
-                                        string commentByLine = (cmName + " " + cmEmail).Trim();
+                                        DateTime cDateAdded = cs.GetDate("cDateAdded");
+                                        DateTime rightNow = DateTime.Now;
+                                        string cDateCaption = (rightNow.AddDays(7).CompareTo(cDateAdded) > 0) ? cDateAdded.ToString("dddd, d MMMM") : cDateAdded.ToString("d MMMM yyyy");
+                                        string commentByLine = cmName;
+                                        commentByLine += ((!string.IsNullOrWhiteSpace(commentByLine) && !string.IsNullOrWhiteSpace(cDateCaption)) ? " &bull; " : "") + cDateCaption;
+                                        commentByLine += ((!string.IsNullOrWhiteSpace(commentByLine)) ? " &bull; " : "");
                                         comment = new ForumComment() {
                                             commentId = commentId,
                                             comment = string.IsNullOrWhiteSpace( commentBody ) ? "(empty)" : commentBody ,
@@ -114,15 +120,18 @@ namespace Contensive.Addons.Forum {
                                         if (replyId != reply.replyId) {
                                             //
                                             // -- this row has a new reply
-                                            string replyImageFilename = cs.GetText("rmImageFilename");
-                                            replyImageFilename = (string.IsNullOrWhiteSpace(replyImageFilename)) ? cs.GetText("cmthumbfilename") : replyImageFilename;
-                                            replyImageFilename = (!string.IsNullOrWhiteSpace(replyImageFilename)) ? cp.Site.FilePath + replyImageFilename : "";
+                                            DateTime rDateAdded = cs.GetDate("rDateAdded");
+                                            DateTime rightNow = DateTime.Now;
+                                            string rDateCaption = (rightNow.AddDays(7).CompareTo(rDateAdded) > 0) ? rDateAdded.ToString("dddd, d MMMM") : rDateAdded.ToString("d MMMM yyyy");
+                                            string replyByLine = cs.GetText("rmName");
+                                            replyByLine += ((!string.IsNullOrWhiteSpace(replyByLine) && !string.IsNullOrWhiteSpace(rDateCaption)) ? " &bull; " : "") + rDateCaption;
                                             reply = new ForumCommentReply() {
                                                 replyId = cs.GetInteger("replyId"),
                                                 reply = cs.GetText("reply"),
                                                 replyUserName = cs.GetText("rmName"),
                                                 replyUserEmail = cs.GetText("rmEmail"),
-                                                replyImageFilename = replyImageFilename
+                                                replyByLine = replyByLine,
+                                                replyImageFilename = DesignBlockController.getAvatarLink(cp, ae, cs.GetText("cmthumbfilename"), cs.GetText("rmImageFilename"))
                                             };
                                             comment.replyList.Add(reply);
                                         }

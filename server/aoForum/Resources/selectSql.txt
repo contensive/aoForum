@@ -1,9 +1,9 @@
 ﻿
 select 
 f.id,f.name,f.headline,f.description,f.recaptcha
-,c.id as commentId,c.comment as comment
+,c.id as commentId,c.comment as comment, c.DateAdded as cDateAdded
 ,cm.id as cmId,cm.name as cmName,cm.email as cmEmail,cm.thumbnailfilename as cmthumbfilename,cm.imagefilename as cmImageFilename
-,r.id as replyId,r.comment as reply
+,r.id as replyId,r.comment as reply, r.DateAdded as rDateAdded
 ,rm.id as rmId, rm.name as rmName,rm.email as rmEmail,rm.thumbnailfilename as rmthumbfilename,rm.imagefilename as rmImageFilename
 from fmforums f
 left join fmForumComments c on c.forumid=f.id
